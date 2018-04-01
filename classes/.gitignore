@@ -1,5 +1,13 @@
 /Apiary.class
 /Attribute.class
 /AttributeDecorator.class
+/Bee.class
+/BeeDemo.class
 /Beehive.class
+/Berzerker.class
+/Builder.class
 /Main.class
+/QueenBee.class
+/Species.class
+/WarriorBee.class
+/WorkerBee.class
