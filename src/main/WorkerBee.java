@@ -1,10 +1,21 @@
+package main;
 
-public class WorkerBee extends QueenBee{
+import java.util.ArrayList;
+
+public class WorkerBee extends Bee {
+
     private int productivity;
     private int speed;
+
     public WorkerBee() {
         productivity = 5;
         speed = 5;
+    }
+    
+    @Override
+    public ArrayList<String> getSpecies() {
+        //if ()
+        return null;
     }
     
     public int getProductivity() {
@@ -22,4 +33,5 @@ public class WorkerBee extends QueenBee{
     public void setSpeed(int speed) {
         this.speed = speed;
     }
+    
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /Apiary.class
 /Attribute.class
 /AttributeDecorator.class
@@ -11,3 +12,7 @@
 /Species.class
 /WarriorBee.class
 /WorkerBee.class
+=======
+/test/
+/main/
+>>>>>>> 3daca1bb69c710d699140eb26fafb478522d8be6
