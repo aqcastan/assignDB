@@ -17,7 +17,8 @@ public class WorkerBeeStateChangeTest {
         
         for (int i = 0; i <10; i++) beehive.spawnWorkerBeeTest();
         String in = keyboard.nextLine();
-        while (!in.equals("x")) {
+        while (!in.equals("x")) {   //Press enter to advance tick
+            System.out.println("Press enter to advance tick");
             beehive.updateBeehiveWorkers();
             in = keyboard.nextLine();
         }

@@ -1,17 +1,22 @@
 package main;
 import java.util.ArrayList;
 
+import main.Hive.HiveBuilder;
+
 public class Beehive {
 
     private int resources;
     private ArrayList<Hive> hives;
     private ArrayList<WorkerBee> workerBees;
+    HiveBuilder hiveBuilder;
     
     public Beehive() {
         hives = new ArrayList<Hive>();
         workerBees = new ArrayList<WorkerBee>();
+        hiveBuilder = new Hive.HiveBuilder(10, 10).setBuilt(true);
         
-        hives.add(new Hive(true));
+        hives.add(hiveBuilder.build());
+        hiveBuilder.setBuilt(false);
         resources = 0;
     }    
     
@@ -25,7 +30,7 @@ public class Beehive {
         if (!hives.get(hives.size()-1).isBuilt()){
             hiveSpace -= 10;  //Remove ten spaces if the last hive is not done being built
         } else {
-            hives.add(new Hive());
+            hives.add(hiveBuilder.build());
         }
         System.out.println("Beehive has " + hiveSpace + " hivespace");
         System.out.println("Beehive has " + resources + " resources");
@@ -53,15 +58,15 @@ public class Beehive {
                 }
             }
             
-            if (resources == 0) {
-                if (wb.Harvest()) { //Harvest resources
+            if (resources < workerBees.size()) {    //Harvest resources until there are at least as many resources as worker bees
+                if (wb.Harvest()) { 
                     System.out.println("Harvesting, Energy: " + wb.getEnergy());
                     addResource();
                     continue;
                 }
             }
             
-            if (hives.get(hives.size()-1).isBuilt()) hives.add(new Hive()); //Add new hive for construction if needed
+            if (hives.get(hives.size()-1).isBuilt()) hives.add(hiveBuilder.build()); //Add new hive for construction if needed
             if (!hives.get(hives.size()-1).enoughResources()) addConstructionWork();    //Add resource to hive
             if (addTickWork() && wb.Build()) {  //Do construction work
                 System.out.println("Building hive, Energy: " + wb.getEnergy());
@@ -121,7 +126,7 @@ public class Beehive {
      */
     public void addHiveConstuctionJob() {
         if (hives.get(hives.size()-1).isBuilt()){
-            hives.add(new Hive());
+            hives.add(hiveBuilder.build());
         }
     }
 

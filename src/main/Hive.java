@@ -1,24 +1,16 @@
 package main;
 
 public class Hive {
-
+    
+    //required parameters
     private int resourcesRequired;  //Amount of resources required to build hive
     private int constructionTickProgress;   //Amount of ticks invested so far
     private int constructionResourceProgress;   //Amount of resources invested so far
     private int ticksPerResource;   //Amount of ticks needed to add resource to hive
+    
+    
+    //optional parameters
     private boolean built;  //Determines whether the hive is built or not.
-    
-    public Hive() {
-        this.resourcesRequired = 10;
-        this.constructionTickProgress = 0;
-        this.constructionResourceProgress = 0;
-        this.ticksPerResource = 10;
-        this.built = false;
-    }
-    
-    public Hive(boolean built) {
-        this.built = true;
-    }
     
     /**
      * Add resource to the construction of this hive. 
@@ -66,4 +58,46 @@ public class Hive {
     public boolean enoughResources() {
         return resourcesRequired == constructionResourceProgress;
     }
+
+    
+    private Hive(HiveBuilder builder) {
+        this.constructionResourceProgress = builder.constructionResourceProgress;
+        this.constructionTickProgress=builder.constructionTickProgress;
+        this.ticksPerResource = builder.ticksPerResource;
+        this.resourcesRequired = builder.resourcesRequired;
+        this.built=builder.built;
+    }
+    
+    //Builder Class
+    public static class HiveBuilder{
+
+        // required parameters
+        private int resourcesRequired;
+        private int ticksPerResource;
+
+
+        // optional parameters
+        private boolean built;
+        private int constructionResourceProgress;
+        private int constructionTickProgress;
+        
+        public HiveBuilder(int resourcesRequired, int ticksPerResource){
+            this.resourcesRequired=resourcesRequired;
+            this.ticksPerResource=ticksPerResource;
+            this.constructionResourceProgress = 0;
+            this.constructionTickProgress = 0;
+        }
+
+        public HiveBuilder setBuilt(boolean isHiveBuilt) {
+            this.built = isHiveBuilt;
+            return this;
+        }
+
+        
+        public Hive build(){
+            return new Hive(this);
+        }
+
+    }
+
 }
