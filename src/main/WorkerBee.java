@@ -1,17 +1,25 @@
 package main;
 
-public class WorkerBee extends Bee {
+import java.util.ArrayList;
+
+public class WorkerBee implements Bee {
 
     private int energy;
     private int maxEnergy;
     private Beehive beehive;
+    private int productivity;
+    private int speed;
 
     public WorkerBee(Beehive beehive) {
         this.beehive = beehive;
         this.energy = 10;
         this.maxEnergy = 10;
     }
-
+   
+    public WorkerBee() {
+        productivity = 5;
+        speed = 5;
+    }
     /**
      * Does nothing.
      * @return  true. Always
@@ -67,6 +75,27 @@ public class WorkerBee extends Bee {
         }
         return false;
     }
+
+    public ArrayList<String> getSpecies() {
+        //if ()
+        return null;
+    }
+    
+    public int getProductivity() {
+        return productivity;
+    }
+    
+    public void setProductivity(int productivity) {
+        this.productivity = productivity;
+    }
+    
+    public int getSpeed() {
+        return speed;
+    }
+    
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
     
     /**
      * Getter for energy available
@@ -74,6 +103,24 @@ public class WorkerBee extends Bee {
      */
     public int getEnergy() {
         return energy;
+    }
+
+    @Override
+    public void rest() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void idle() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public int boost() {
+        // TODO Auto-generated method stub
+        return 0;
     }
 
 }

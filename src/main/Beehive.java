@@ -9,6 +9,7 @@ public class Beehive {
     private ArrayList<Hive> hives;
     private ArrayList<WorkerBee> workerBees;
     HiveBuilder hiveBuilder;
+    private ArrayList<Attribute> attributes;
     
     public Beehive() {
         hives = new ArrayList<Hive>();

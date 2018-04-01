@@ -1,14 +1,9 @@
-package main;
 
-import java.util.ArrayList;
-
-public abstract class Bee {
-        
-    ArrayList<String> species;
-    boolean resting;
-    int energy;
+public interface Bee {
     
-    public Bee () {
-        
-    }
+    public void rest();
+    
+    public void idle();
+    
+    public int boost();
 }
